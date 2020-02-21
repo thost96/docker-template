@@ -4,8 +4,9 @@ FROM <source>
 LABEL maintainer="info@thorstenreichelt.de"
 
 #install needed packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -qq && apt-get install -y -qq \
         locales \
+	tzdata \
      && rm -rf /var/lib/apt/lists/*
 
 #set locale and timezone
@@ -21,10 +22,9 @@ ENV LANG="de_DE.UTF-8" \
 #link logfile to stdout
 RUN ln -sf /dev/stdout <logfile>
 
-
 #set user and expose volumes and ports 
 USER <username>
 EXPOSE <port>
 VOLUME [""]
-	
 CMD ["", ""]
+HEALTHCHECK [""]
