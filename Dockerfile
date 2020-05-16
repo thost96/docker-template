@@ -5,9 +5,16 @@ LABEL maintainer="info@thorstenreichelt.de"
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
-        locales=2.28-10 \
-        tzdata=2020a-0+deb10u1 \
-     && rm -rf /var/lib/apt/lists/*
+	#Ubuntu 18.04
+	#locales=2.27-3ubuntu1 \
+	#tzdata=2019c-0ubuntu0.18.04 \
+	#Ubuntu 20.04
+	locales=2.31-0ubuntu9 \
+	tzdata=2019c-3ubuntu1 \
+	#NodeJS
+	#locales=2.24-11+deb9u4 \
+	#tzdata=2019c-0+deb9u1 \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen \
     && \dpkg-reconfigure --frontend=noninteractive locales \
@@ -17,10 +24,8 @@ RUN cp /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 ENV LANG="de_DE.UTF-8" \
 	TZ="Europe/Berlin"
 
-#link logfile to stdout
 RUN ln -sf /dev/stdout <logfile>
 
-#set user and expose volumes and ports 
 USER <username>
 EXPOSE <port>
 VOLUME [""]
