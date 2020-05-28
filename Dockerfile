@@ -10,7 +10,7 @@ RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
 	tzdata=2019c-3ubuntu1 \
 	#Ubuntu 18.04
 	#locales=2.27-3ubuntu1 \
-	#tzdata=2019c-0ubuntu0.18.04 \
+	#tzdata=2020a-0ubuntu0.18.04  \
 	#NodeJS
 	#locales=2.24-11+deb9u4 \
 	#tzdata=2019c-0+deb9u1 \
