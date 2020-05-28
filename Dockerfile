@@ -3,6 +3,7 @@ FROM ubuntu:20.04
 LABEL maintainer="info@thorstenreichelt.de"
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG APP_NAME=TEST
 
 RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends \
 	#Ubuntu 20.04
@@ -27,9 +28,12 @@ ENV LANG="de_DE.UTF-8" \
     LANGUAGE="de_DE.UTF-8" \
     TZ="Europe/Berlin"
 
+RUN groupadd ${APP_NAME} \
+	&& useradd -g ${APP_NAME} ${APP_NAME}
+
 RUN ln -sf /dev/stdout <logfile>
 
-USER <username>
+USER ${APP_NAME}
 EXPOSE <port>
 VOLUME [""]
 CMD ["", ""]
