@@ -1,4 +1,4 @@
-FROM alpine:3.11.6
+FROM ubuntu:20.04
 
 LABEL maintainer="info@thorstenreichelt.de"
 
