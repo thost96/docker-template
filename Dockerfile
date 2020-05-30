@@ -1,11 +1,14 @@
-FROM alpine:3.11.6
+ARG BASEIMAGE="alpine:3.11.6"
+
+FROM ${BASEIMAGE}
 
 LABEL maintainer="info@thorstenreichelt.de"
 
 ARG APP_NAME=TEST
+ARG TZDATA_VERSION="2020a-r0" 
 
 RUN apk add --no-cache \
-        tzdata=2020a-r0 \
+        tzdata=${TZDATA_VERSION} \
         ca-certificates=20191127-r1 \
         wget=1.20.3-r0 \
         && wget --quiet -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
