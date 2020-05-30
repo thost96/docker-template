@@ -4,6 +4,8 @@ Template for building docker container images using my standards.
 
 ## Changelog
 
+1.5 improved Dockerfile for multiple builds
+
 1.4 added dynamic user creation in Dockerfile 
 
 1.3 added alpine template for minimal images 
