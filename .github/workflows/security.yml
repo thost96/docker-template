@@ -34,6 +34,7 @@ jobs:
           with:
             image: ${{ secrets.DOCKER_USERNAME }}/appname:${{ matrix.tag }}
             token: ${{ secrets.GITHUB_TOKEN }}
+            issue: false
 
   snyk:
     name: Snyk - Security Check
