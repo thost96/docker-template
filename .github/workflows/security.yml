@@ -35,22 +35,3 @@ jobs:
             image: ${{ secrets.DOCKER_USERNAME }}/appname:${{ matrix.tag }}
             token: ${{ secrets.GITHUB_TOKEN }}
             issue: false
-
-  snyk:
-    name: Snyk - Security Check
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        tag: []
-        
-    steps:
-        - uses: actions/checkout@master
-        - name: Run Snyk to check for high vulnerabilities
-          uses: snyk/actions/docker@master
-          env:
-            SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          with:
-            image: ${{secrets.DOCKER_USERNAME }}/appname:${{ matrix.tag }}
-            args: --severity-threshold=high
-
